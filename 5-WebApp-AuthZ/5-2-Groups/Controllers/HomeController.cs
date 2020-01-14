@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
-using System.Security.Claims;
 using WebApp_OpenIDConnect_DotNet.Models;
 
 namespace WebApp_OpenIDConnect_DotNet.Controllers
@@ -24,6 +23,14 @@ namespace WebApp_OpenIDConnect_DotNet.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel {RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier});
+        }
+
+        [Authorize("InAuthorizedGroup")]
+        public IActionResult TestAuth()
+        {
+            ViewData["User"] = HttpContext.User;
+            ViewData["Test"] = "Authorised via custom requirement for the 'InAuthorizedGroup' policy authorised by Group Id";
+            return View("Index");
         }
     }
 }
