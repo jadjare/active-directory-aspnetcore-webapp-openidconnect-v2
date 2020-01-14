@@ -278,6 +278,8 @@ namespace WebApp_OpenIDConnect_DotNet.Services.MicrosoftGraph
         {
             List<Group> groups = new List<Group>();
 
+            PrepareAuthenticatedClient(accessToken);
+
             // Get groups the current user is a direct member of.
             IUserMemberOfCollectionWithReferencesPage memberOfGroups = await graphServiceClient.Me.MemberOf.Request().GetAsync();
             if (memberOfGroups?.Count > 0)
