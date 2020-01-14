@@ -13,14 +13,16 @@
 
 <h4 style="color:blue">Claims from the signed-in user's token</h4>
 
+<div class="panel panel-default panel-body">
+    <a asp-area="" asp-controller="Home" asp-action="TestAuth" class="btn btn-primary" role="button">Click To test Authorisation using group membership</a>
+    <div class="alert alert-info">
+        <h3>@ViewData["TestAuthResult"]</h3>
+    </div>
+</div>
 
 @{
     var user = ViewData["User"] as ClaimsPrincipal;
 }
-
-<div class="alert alert-info">
-    <h2>@ViewData["test"]</h2>
-</div>
 
 <table class="table table-striped table-bordered table-condensed table-hover">
     <tr>

@@ -29,7 +29,7 @@ namespace WebApp_OpenIDConnect_DotNet.Controllers
         public IActionResult TestAuth()
         {
             ViewData["User"] = HttpContext.User;
-            ViewData["Test"] = "Authorised via custom requirement for the 'InAuthorizedGroup' policy authorised by Group Id";
+            ViewData["TestAuthResult"] = "Authorised via custom requirement for the 'InAuthorizedGroup' policy authorised by Group Id";
             return View("Index");
         }
     }

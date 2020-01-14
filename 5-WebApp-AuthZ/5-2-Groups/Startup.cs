@@ -1,6 +1,4 @@
-﻿using Microsoft.AspNetCore.Authentication.AzureAD.UI;
-using Microsoft.AspNetCore.Authentication.OpenIdConnect;
-using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -10,6 +8,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Identity.Web;
 using Microsoft.Identity.Web.TokenCacheProviders.InMemory;
+using WebApp_OpenIDConnect_DotNet.AuthorizationHandlers;
 using WebApp_OpenIDConnect_DotNet.Services.GraphOperations;
 
 namespace WebApp_OpenIDConnect_DotNet
@@ -56,6 +55,9 @@ namespace WebApp_OpenIDConnect_DotNet
                 options.Filters.Add(new AuthorizeFilter(policy));
             })
             .SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+
+            //Add our test authorisation policies.
+            services.AddTestAuthorizationPolicies();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
